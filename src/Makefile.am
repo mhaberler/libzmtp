@@ -24,9 +24,15 @@ libzmtp_la_SOURCES = \
 
 AM_CFLAGS = -g
 AM_CPPFLAGS = -I$(top_srcdir)/include
-bin_PROGRAMS = libzmtp_selftest
+bin_PROGRAMS = libzmtp_selftest testdealer testxsub
 libzmtp_selftest_LDADD = libzmtp.la
 libzmtp_selftest_SOURCES = zmtp_selftest.c
 libzmtp_la_LDFLAGS = -version-info @LTVER@
 
-TESTS = libzmtp_selftest
+testdealer_LDADD = libzmtp.la
+testdealer_SOURCES = testdealer.c
+
+testxsub_LDADD = libzmtp.la
+testxsub_SOURCES = testxsub.c
+
+TESTS = libzmtp_selftest testdealer testxsub
